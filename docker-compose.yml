@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  server:
+    container_name: echo-code-server
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+      target: runner
+    ports:
+      - "3000:3000"
+    networks:
+      - Echo-Code
+
+  client:
+    container_name: echo-code-client
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+      target: runner
+    ports:
+      - "5173:5173"
+    networks:
+      - Echo-Code
+    depends_on:
+      - server
+
+networks:
+  Echo-Code:
+    driver: bridge

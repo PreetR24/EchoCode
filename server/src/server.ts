@@ -13,14 +13,23 @@ const app = express()
 
 app.use(express.json())
 
-app.use(cors())
+const allowedOrigins = [
+	"https://echocode-hqr6.onrender.com",
+	"http://localhost:5173"  
+];
+
+app.use(cors({
+	origin: allowedOrigins,
+	credentials: true
+}));
 
 app.use(express.static(path.join(__dirname, "public"))) // Serve static files
 
 const server = http.createServer(app)
 const io = new Server(server, {
 	cors: {
-		origin: "*",
+		origin: allowedOrigins,
+		credentials: true
 	},
 	maxHttpBufferSize: 1e8,
 	pingTimeout: 60000,

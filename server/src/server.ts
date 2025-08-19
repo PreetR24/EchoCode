@@ -14,7 +14,7 @@ const app = express()
 app.use(express.json())
 
 const allowedOrigins = [
-	"https://echocode-hqr6.onrender.com",
+	"https://echo-code.vercel.app/",
 	"http://localhost:5173"  
 ];
 
@@ -29,6 +29,7 @@ const server = http.createServer(app)
 const io = new Server(server, {
 	cors: {
 		origin: allowedOrigins,
+		methods: ["GET", "POST"],
 		credentials: true
 	},
 	maxHttpBufferSize: 1e8,

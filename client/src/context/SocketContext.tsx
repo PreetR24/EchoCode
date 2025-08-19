@@ -42,6 +42,8 @@ const SocketProvider = ({ children }: { children: ReactNode }) => {
         () =>
             io(BACKEND_URL, {
                 reconnectionAttempts: 2,
+                transports: ["websocket"], // 👈 force websocket
+                withCredentials: true,     // if backend uses credentials
             }),
         [],
     )

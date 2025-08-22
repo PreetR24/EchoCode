@@ -3,11 +3,6 @@ export default {
     content: [
         "./index.html",
         "./src/**/*.{js,ts,jsx,tsx}",
-        "./src/**/*.{html,js,ts,jsx,tsx}",
-        "./src/**/*.{css,scss}",
-        "./src/components/**/*.{js,ts,jsx,tsx}",
-        "./src/pages/**/*.{js,ts,jsx,tsx}",
-        "./src/context/**/*.{js,ts,jsx,tsx}",
     ],
     theme: {
         extend: {
@@ -27,23 +22,4 @@ export default {
         },
     },
     plugins: [],
-    safelist: [
-        // Add any classes that might be dynamically generated
-        'bg-dark',
-        'bg-light',
-        'text-dark',
-        'text-light',
-        'border-dark',
-        'border-light',
-        'bg-darkHover',
-        'bg-primary',
-        'bg-danger',
-        'text-primary',
-        'text-danger',
-        'border-primary',
-        'border-danger'
-    ],
-    corePlugins: {
-        preflight: true,
-    }
 }

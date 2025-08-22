@@ -11,7 +11,7 @@ export default defineConfig({
         assetsDir: "assets",
         sourcemap: false,
         chunkSizeWarningLimit: 1600,
-        cssMinify: true,
+        cssCodeSplit: false,
         rollupOptions: {
             output: {
                 manualChunks(id) {
@@ -25,11 +25,9 @@ export default defineConfig({
                 },
             },
         },
-        cssCodeSplit: false,
     },
     css: {
         postcss: "./postcss.config.cts",
-        devSourcemap: false,
     },
     resolve: {
         alias: [

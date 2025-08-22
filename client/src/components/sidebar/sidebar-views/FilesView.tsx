@@ -9,6 +9,8 @@ import { TbFileUpload } from "react-icons/tb"
 import { v4 as uuidV4 } from "uuid"
 import { toast } from "react-hot-toast"
 
+// Note: AbortError is normal when user cancels directory picker - this is not a bug
+
 function FilesView() {
     const { downloadFilesAndFolders, updateDirectory } = useFileSystem()
     const { viewHeight } = useResponsive()
@@ -21,9 +23,23 @@ function FilesView() {
 
             // Check for modern API support
             if ("showDirectoryPicker" in window) {
-                const directoryHandle = await window.showDirectoryPicker()
-                await processDirectoryHandle(directoryHandle)
-                return
+                try {
+                    const directoryHandle = await window.showDirectoryPicker()
+                    await processDirectoryHandle(directoryHandle)
+                    return
+                } catch (pickerError: any) {
+                    // Handle specific error types
+                    if (pickerError.name === 'AbortError') {
+                        // User cancelled the directory picker - this is normal, don't show error
+                        return
+                    }
+                    if (pickerError.name === 'NotAllowedError') {
+                        toast.error("Permission denied. Please allow directory access.")
+                        return
+                    }
+                    // Re-throw other errors to be handled by outer catch
+                    throw pickerError
+                }
             }
 
             // Fallback for browsers without `showDirectoryPicker`
@@ -46,9 +62,12 @@ function FilesView() {
 
             // Notify if neither API is supported
             toast.error("Your browser does not support directory selection.")
-        } catch (error) {
+        } catch (error: any) {
             console.error("Error opening directory:", error)
-            toast.error("Failed to open directory")
+            // Only show error toast for actual errors, not user cancellations
+            if (error.name !== 'AbortError') {
+                toast.error("Failed to open directory")
+            }
         } finally {
             setIsLoading(false)
         }

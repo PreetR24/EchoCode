@@ -1,0 +1,31 @@
+/* Critical CSS - Always load first */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Essential base styles */
+body {
+    font-family: "Space Grotesk", sans-serif;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* Essential color classes */
+.bg-dark { background-color: #212429; }
+.bg-light { background-color: #f5f5f5; }
+.text-dark { color: #212429; }
+.text-light { color: #f5f5f5; }
+.text-white { color: #ffffff; }
+.text-black { color: #000000; }
+
+/* Essential layout classes */
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.min-h-screen { min-height: 100vh; }
+.flex { display: flex; }
+.grid { display: grid; }
+.hidden { display: none; }
+.block { display: block; }

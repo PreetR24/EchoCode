@@ -5,6 +5,9 @@ export default {
         "./src/**/*.{js,ts,jsx,tsx}",
         "./src/**/*.{html,js,ts,jsx,tsx}",
         "./src/**/*.{css,scss}",
+        "./src/components/**/*.{js,ts,jsx,tsx}",
+        "./src/pages/**/*.{js,ts,jsx,tsx}",
+        "./src/context/**/*.{js,ts,jsx,tsx}",
     ],
     theme: {
         extend: {
@@ -31,6 +34,16 @@ export default {
         'text-dark',
         'text-light',
         'border-dark',
-        'border-light'
-    ]
+        'border-light',
+        'bg-darkHover',
+        'bg-primary',
+        'bg-danger',
+        'text-primary',
+        'text-danger',
+        'border-primary',
+        'border-danger'
+    ],
+    corePlugins: {
+        preflight: true,
+    }
 }

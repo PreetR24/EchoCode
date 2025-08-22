@@ -1,50 +1,59 @@
-@import url("tldraw/tldraw.css");
+/* @import url("tldraw/tldraw.css"); */
 
+/* Tailwind directives must come first */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Custom components */
 @layer components {
     .view-title {
         @apply mb-2 w-full border-b pb-2 text-start text-lg;
     }
 }
 
-body {
-    font-family: "Space Grotesk", sans-serif;
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-
-    --sb-track-color: #3d404a;
-    --sb-thumb-color: #e1e1ffb3;
-    --sb-size: 6px;
-}
-
-::-webkit-scrollbar {
-    width: var(--sb-size);
-    height: var(--sb-size);
-}
-
-::-webkit-scrollbar-track {
-    background: var(--sb-track-color);
-    border-radius: 5px;
-    height: var(--sb-size);
-    width: var(--sb-size);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--sb-thumb-color);
-    border-radius: 5px;
-    height: var(--sb-size);
-}
-
-@supports not selector(::-webkit-scrollbar) {
+/* Base styles */
+@layer base {
     body {
-        scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+        font-family: "Space Grotesk", sans-serif;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+
+        --sb-track-color: #3d404a;
+        --sb-thumb-color: #e1e1ffb3;
+        --sb-size: 6px;
     }
 }
 
+/* Custom utilities */
+@layer utilities {
+    ::-webkit-scrollbar {
+        width: var(--sb-size);
+        height: var(--sb-size);
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--sb-track-color);
+        border-radius: 5px;
+        height: var(--sb-size);
+        width: var(--sb-size);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--sb-thumb-color);
+        border-radius: 5px;
+        height: var(--sb-size);
+    }
+
+    @supports not selector(::-webkit-scrollbar) {
+        body {
+            scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+        }
+    }
+}
+
+/* Animations */
 @keyframes up-down {
     0% {
         transform: translateY(-20px);
@@ -54,15 +63,13 @@ body {
     }
 }
 
-/* Editor */
-
+/* Editor styles */
 .cm-editor {
     max-height: 93vh;
 }
 
 .cm-editor .cm-scroller {
     font-family: "Space Mono", monospace;
-    /* min-height: 100vh; */
 }
 
 select {
@@ -83,7 +90,6 @@ select {
 }
 
 /* Github Corner */
-
 .github-corner:hover .octo-arm {
     animation: octocat-wave 560ms ease-in-out;
 }

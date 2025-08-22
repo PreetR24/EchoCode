@@ -2,6 +2,7 @@
 import ReactDOM from "react-dom/client"
 import App from "./App.tsx"
 import AppProvider from "./context/AppProvider.tsx"
+// Import global styles first to ensure proper CSS loading
 import "@/styles/global.css"
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

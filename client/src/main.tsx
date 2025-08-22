@@ -1,9 +1,9 @@
 // import React from "react"
 import ReactDOM from "react-dom/client"
+// Import global styles first
+import "@/styles/global.css"
 import App from "./App.tsx"
 import AppProvider from "./context/AppProvider.tsx"
-// Import global styles
-import "@/styles/global.css"
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
     // <React.StrictMode>

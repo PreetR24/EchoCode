@@ -1,55 +1,51 @@
-/* @import url("tldraw/tldraw.css"); */
-
-/* Tailwind directives must come first */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* Custom components */
-@layer components {
-    .view-title {
-        @apply mb-2 w-full border-b pb-2 text-start text-lg;
-    }
+.view-title {
+    margin-bottom: 0.5rem;
+    width: 100%;
+    border-bottom-width: 1px;
+    padding-bottom: 0.5rem;
+    text-align: start;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
 }
 
 /* Base styles */
-@layer base {
-    body {
-        font-family: "Space Grotesk", sans-serif;
-        width: 100%;
-        max-width: 100%;
-        overflow-x: hidden;
-
-        --sb-track-color: #3d404a;
-        --sb-thumb-color: #e1e1ffb3;
-        --sb-size: 6px;
-    }
+body {
+    font-family: "Space Grotesk", sans-serif;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    --sb-track-color: #3d404a;
+    --sb-thumb-color: #e1e1ffb3;
+    --sb-size: 6px;
 }
 
-/* Custom utilities */
-@layer utilities {
-    ::-webkit-scrollbar {
-        width: var(--sb-size);
-        height: var(--sb-size);
-    }
+/* Scrollbar styles */
+::-webkit-scrollbar {
+    width: var(--sb-size);
+    height: var(--sb-size);
+}
 
-    ::-webkit-scrollbar-track {
-        background: var(--sb-track-color);
-        border-radius: 5px;
-        height: var(--sb-size);
-        width: var(--sb-size);
-    }
+::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 5px;
+    height: var(--sb-size);
+    width: var(--sb-size);
+}
 
-    ::-webkit-scrollbar-thumb {
-        background: var(--sb-thumb-color);
-        border-radius: 5px;
-        height: var(--sb-size);
-    }
+::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 5px;
+    height: var(--sb-size);
+}
 
-    @supports not selector(::-webkit-scrollbar) {
-        body {
-            scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
-        }
+@supports not selector(::-webkit-scrollbar) {
+    body {
+        scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
     }
 }
 

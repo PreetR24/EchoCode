@@ -5,7 +5,11 @@ import { defineConfig } from "vite"
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [react()],
+    base: "./",
     build: {
+        outDir: "dist",
+        assetsDir: "assets",
+        sourcemap: false,
         chunkSizeWarningLimit: 1600,
         rollupOptions: {
             output: {
@@ -20,6 +24,10 @@ export default defineConfig({
                 },
             },
         },
+        cssCodeSplit: true,
+    },
+    css: {
+        postcss: "./postcss.config.cts",
     },
     resolve: {
         alias: [

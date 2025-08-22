@@ -1,6 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-    content: ["./src/**/*.{jsx,tsx}", "./*.html"],
+    content: [
+        "./index.html",
+        "./src/**/*.{js,ts,jsx,tsx}",
+        "./src/**/*.{html,js,ts,jsx,tsx}",
+        "./src/**/*.{css,scss}",
+    ],
     theme: {
         extend: {
             colors: {
@@ -19,4 +24,13 @@ export default {
         },
     },
     plugins: [],
+    safelist: [
+        // Add any classes that might be dynamically generated
+        'bg-dark',
+        'bg-light',
+        'text-dark',
+        'text-light',
+        'border-dark',
+        'border-light'
+    ]
 }

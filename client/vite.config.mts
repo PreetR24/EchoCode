@@ -27,7 +27,7 @@ export default defineConfig({
         },
     },
     css: {
-        postcss: "./postcss.config.cts",
+        postcss: "./postcss.config.cjs",
     },
     resolve: {
         alias: [
